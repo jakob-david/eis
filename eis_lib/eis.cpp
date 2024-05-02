@@ -394,7 +394,7 @@ long double eis::getValue() const {
 
 // to string
 //-------------------------------
-std::string eis::printBitPattern() const{
+std::string eis::toString() const{
 
     std::string str;
     for(bool bit : this->getBitArray()){

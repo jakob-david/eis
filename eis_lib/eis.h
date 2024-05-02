@@ -66,7 +66,7 @@ public:
     void flipMantissa(unsigned long idx);
     //-------------------------------
 
-    // set and get bit array value
+    // convert value
     //-------------------------------
     void setValue(long double new_value);
 
@@ -75,7 +75,7 @@ public:
 
     // to string
     //-------------------------------
-    [[nodiscard]] std::string printBitPattern() const;
+    [[nodiscard]] std::string toString() const;
     //-------------------------------
 
 private:

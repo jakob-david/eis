@@ -5,11 +5,11 @@ project(Google_tests)
 add_subdirectory(googletest)
 include_directories(./googletest/googletest/include ./googletest/googletest)
 
-add_executable(all_tests
+add_executable(eis_tests
 
         tests/eis_general.cpp
         functions/functions.h
 )
 
-target_link_libraries(all_tests eis_lib)
-target_link_libraries(all_tests gtest gtest_main)
+target_link_libraries(eis_tests eis_lib)
+target_link_libraries(eis_tests gtest gtest_main)

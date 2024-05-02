@@ -166,7 +166,7 @@ TEST(set_get_value, simple_1){
     EIS.setValue(value);
 
     EXPECT_EQ(value, EIS.getValue());
-    EXPECT_EQ(printBitArray(value), EIS.printBitPattern());
+    EXPECT_EQ(printBitArray(value), EIS.toString());
 }
 
 TEST(set_get_value, simple_2){
@@ -180,7 +180,7 @@ TEST(set_get_value, simple_2){
     EIS.setValue(value);
 
     EXPECT_EQ(value, EIS.getValue());
-    EXPECT_EQ(printBitArray(value), EIS.printBitPattern());
+    EXPECT_EQ(printBitArray(value), EIS.toString());
 }
 
 TEST(set_get_value, simple_3){
@@ -194,7 +194,7 @@ TEST(set_get_value, simple_3){
     EIS.setValue(value);
 
     EXPECT_EQ(value, EIS.getValue());
-    EXPECT_EQ(printBitArray(value), EIS.printBitPattern());
+    EXPECT_EQ(printBitArray(value), EIS.toString());
 }
 
 TEST(set_get_value, simple_4){
@@ -208,5 +208,5 @@ TEST(set_get_value, simple_4){
     EIS.setValue(value);
 
     EXPECT_EQ(value, EIS.getValue());
-    EXPECT_EQ(printBitArray(value), EIS.printBitPattern());
+    EXPECT_EQ(printBitArray(value), EIS.toString());
 }

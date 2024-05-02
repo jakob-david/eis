@@ -17,7 +17,8 @@ set(CMAKE_CXX_FLAGS_RELEASE "-O2")
 
 # main.cpp
 ######################################
-set(SOURCE_FILES main.cpp)
+set(SOURCE_FILES main.cpp
+        python_exporter.cpp)
 add_executable(eis_main ${SOURCE_FILES})
 ######################################
 
@@ -37,4 +38,10 @@ target_link_libraries(eis_main eis_lib)
 # Google Tests
 ######################################
 add_subdirectory(gtests)
+######################################
+
+# Pybind11
+######################################
+add_subdirectory(pybind11)
+pybind11_add_module(eis_library python_exporter.cpp eis_lib/eis.cpp)
 ######################################
