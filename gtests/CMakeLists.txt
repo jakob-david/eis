@@ -8,6 +8,7 @@ include_directories(./googletest/googletest/include ./googletest/googletest)
 add_executable(all_tests
 
         tests/eis_general.cpp
+        functions/functions.h
 )
 
 target_link_libraries(all_tests eis_lib)

@@ -42,8 +42,21 @@ public:
     [[nodiscard]] bool getSign() const;
     [[nodiscard]] std::vector<bool> getExponent() const;
     [[nodiscard]] std::vector<bool> getMantissa() const;
+    [[nodiscard]] std::vector<bool> getBitArray() const;
     [[nodiscard]] unsigned long getExponentLength() const;
     [[nodiscard]] unsigned long getMantissaLength() const;
+    //-------------------------------
+
+    // special values
+    //-------------------------------
+    void setNaN(bool negative = false);
+    void setInf(bool negative = false);
+    void setZero(bool negative = false);
+
+    [[nodiscard]] bool isNaN() const;
+    [[nodiscard]] bool isInf() const;
+    [[nodiscard]] bool isZero() const;
+    [[nodiscard]] bool isPositive() const;
     //-------------------------------
 
     // flippers
@@ -51,6 +64,26 @@ public:
     void flipSign();
     void flipExponent(unsigned long idx);
     void flipMantissa(unsigned long idx);
+    //-------------------------------
+
+    // set and get bit array value
+    //-------------------------------
+    void setValue(long double new_value);
+
+    [[nodiscard]] long double getValue() const;
+    //-------------------------------
+
+    // to string
+    //-------------------------------
+    [[nodiscard]] std::string printBitPattern() const;
+    //-------------------------------
+
+private:
+
+    // helper functions
+    //-------------------------------
+    [[nodiscard]] long getBias() const;
+    [[nodiscard]] static bool allTrue(const std::vector<bool>& vector);
     //-------------------------------
 
 };

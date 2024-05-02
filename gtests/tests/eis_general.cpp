@@ -5,6 +5,8 @@
 #include "gtest/gtest.h"
 #include "eis.h"
 
+#include "../functions/functions.h"
+
 TEST(constructor, simple_1){
 
     unsigned long mantissa_length = 23;
@@ -49,6 +51,12 @@ TEST(setter_getter, simple_1){
     for(auto element : EIS.getExponent()){
         EXPECT_FALSE(element);
     }
+
+    EIS.setSign(false);
+    EXPECT_TRUE(EIS.isPositive());
+
+    EIS.setSign(true);
+    EXPECT_FALSE(EIS.isPositive());
 }
 
 TEST(flippers, simple_1){
@@ -101,4 +109,104 @@ TEST(flippers, simple_1){
             EXPECT_FALSE(exponent[idx]);
         }
     }
+}
+
+TEST(special_values, simple_1){
+
+    unsigned long mantissa_length = 23;
+    unsigned long exponent_length = 8;
+
+    eis EIS(mantissa_length, exponent_length);
+
+    EXPECT_FALSE(EIS.isNaN());
+    EXPECT_FALSE(EIS.isInf());
+    EXPECT_TRUE(EIS.isZero());
+
+    // negative NaN
+    EIS.setNaN(true);
+    EXPECT_TRUE(EIS.getSign());
+    EXPECT_TRUE(EIS.isNaN());
+
+    // positive NaN
+    EIS.setNaN(false);
+    EXPECT_FALSE(EIS.getSign());
+    EXPECT_TRUE(EIS.isNaN());
+
+    // negative infinity
+    EIS.setInf(true);
+    EXPECT_TRUE(EIS.getSign());
+    EXPECT_TRUE(EIS.isInf());
+
+    // positive infinity
+    EIS.setInf(false);
+    EXPECT_FALSE(EIS.getSign());
+    EXPECT_TRUE(EIS.isInf());
+
+    // negative zero
+    EIS.setZero(true);
+    EXPECT_TRUE(EIS.getSign());
+    EXPECT_TRUE(EIS.isZero());
+
+    // positive zero
+    EIS.setZero(false);
+    EXPECT_FALSE(EIS.getSign());
+    EXPECT_TRUE(EIS.isZero());
+
+}
+
+
+TEST(set_get_value, simple_1){
+
+    unsigned long mantissa_length = 52;
+    unsigned long exponent_length = 11;
+    long double value = 335.4545;
+
+    eis EIS(mantissa_length, exponent_length);
+
+    EIS.setValue(value);
+
+    EXPECT_EQ(value, EIS.getValue());
+    EXPECT_EQ(printBitArray(value), EIS.printBitPattern());
+}
+
+TEST(set_get_value, simple_2){
+
+    unsigned long mantissa_length = 52;
+    unsigned long exponent_length = 11;
+    long double value = -345364.235;
+
+    eis EIS(mantissa_length, exponent_length);
+
+    EIS.setValue(value);
+
+    EXPECT_EQ(value, EIS.getValue());
+    EXPECT_EQ(printBitArray(value), EIS.printBitPattern());
+}
+
+TEST(set_get_value, simple_3){
+
+    unsigned long mantissa_length = 52;
+    unsigned long exponent_length = 11;
+    long double value = 0.0004353;
+
+    eis EIS(mantissa_length, exponent_length);
+
+    EIS.setValue(value);
+
+    EXPECT_EQ(value, EIS.getValue());
+    EXPECT_EQ(printBitArray(value), EIS.printBitPattern());
+}
+
+TEST(set_get_value, simple_4){
+
+    unsigned long mantissa_length = 52;
+    unsigned long exponent_length = 11;
+    long double value = -0.00000056342;
+
+    eis EIS(mantissa_length, exponent_length);
+
+    EIS.setValue(value);
+
+    EXPECT_EQ(value, EIS.getValue());
+    EXPECT_EQ(printBitArray(value), EIS.printBitPattern());
 }
