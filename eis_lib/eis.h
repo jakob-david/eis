@@ -35,9 +35,22 @@ public:
 
     // setter and getter
     //-------------------------------
-    void setSign(const bool new_sign);
+    void setSign(bool new_sign);
+    void setExponent(const std::vector<bool>& new_exponent);
+    void setMantissa(const std::vector<bool>& new_mantissa);
 
-    bool getSign() const;
+    [[nodiscard]] bool getSign() const;
+    [[nodiscard]] std::vector<bool> getExponent() const;
+    [[nodiscard]] std::vector<bool> getMantissa() const;
+    [[nodiscard]] unsigned long getExponentLength() const;
+    [[nodiscard]] unsigned long getMantissaLength() const;
+    //-------------------------------
+
+    // flippers
+    //-------------------------------
+    void flipSign();
+    void flipExponent(unsigned long idx);
+    void flipMantissa(unsigned long idx);
     //-------------------------------
 
 };
