@@ -3,3 +3,5 @@
 1	700	1720621665299597342	CMakeFiles/eis_library.dir/eis_lib/eis.cpp.o	9c45f31a2620dbd9
 0	1834	1720621666432102771	CMakeFiles/eis_library.dir/python_exporter.cpp.o	912279b581e950a6
 1834	2683	1720621667286735790	eis_library.cpython-312-darwin.so	757923f33c157c99
+13	659	1720624379164228722	CMakeFiles/eis_main.dir/main.cpp.o	7fa7f862b98495eb
+13	832	1720624379333971861	eis_lib/CMakeFiles/eis_lib.dir/eis.cpp.o	635f614311d49b6a
