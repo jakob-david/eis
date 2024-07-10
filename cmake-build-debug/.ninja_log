@@ -1,0 +1,5 @@
+# ninja log v5
+1	297	1720621664594863320	build.ninja	d2a78e1d088fae9b
+1	700	1720621665299597342	CMakeFiles/eis_library.dir/eis_lib/eis.cpp.o	9c45f31a2620dbd9
+0	1834	1720621666432102771	CMakeFiles/eis_library.dir/python_exporter.cpp.o	912279b581e950a6
+1834	2683	1720621667286735790	eis_library.cpython-312-darwin.so	757923f33c157c99
