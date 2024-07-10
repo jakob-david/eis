@@ -1,5 +1,18 @@
 # eis
 
+## Setup 
+To setup the library just navigate into the folder and execute the python file **setup.py**
+
+```
+cd ./eis
+python3 setup.py
+```
+
+This will add the two libraries **pybind11** and **googletest**. Following this, the library will be build and the unit tests carried out. 
+If the libraries do already exist a execution of the file will update the librtaries instead of updating them again.
+
+
+## Description 
 Bit flips can be simulated in many ways, but in this project, they are simulated using the eis (Error Insertion Simulator) library, which is a self-written library in C++. More specifically, it is a stripped-down version of the mps (Multi Precision Simulator) library with small additional changes to be able to introduce bit flips. A bit flip can easily be simulated as is depicted in the listing below. It can easily used inside Python since the code can be converted into a Python library using pybind11.
 
 ```
