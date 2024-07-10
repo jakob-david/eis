@@ -17,8 +17,8 @@ set(CMAKE_CXX_FLAGS_RELEASE "-O2")
 
 # main.cpp
 ######################################
-#set(SOURCE_FILES main.cpp python_exporter.cpp)
-#add_executable(eis_main ${SOURCE_FILES})
+set(SOURCE_FILES main.cpp python_exporter.cpp)
+add_executable(eis_main ${SOURCE_FILES})
 ######################################
 
 # find main Python file
