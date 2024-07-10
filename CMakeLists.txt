@@ -18,7 +18,7 @@ set(CMAKE_CXX_FLAGS_RELEASE "-O2")
 # main.cpp
 ######################################
 set(SOURCE_FILES main.cpp python_exporter.cpp)
-add_executable(eis_main ${SOURCE_FILES})
+# add_executable(eis_main ${SOURCE_FILES})              # uncomment to use main.cpp file
 ######################################
 
 # find main Python file
@@ -31,7 +31,7 @@ include_directories(${PYTHON_INCLUDE_DIRS})
 ######################################
 include_directories(eis_lib)
 add_subdirectory(eis_lib)
-target_link_libraries(eis_main eis_lib)
+# target_link_libraries(eis_main eis_lib)               # uncomment to use main.cpp file
 ######################################
 
 # Google Tests
