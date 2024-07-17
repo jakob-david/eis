@@ -7,6 +7,12 @@
 
 // constructors and destructor
 //-------------------------------
+/**
+ * Constructor for an Error Insertion Simulator.
+ *
+ * @param mantissa_length Mantisse of the floating point representation
+ * @param exponent_length Exponent of the floating point representation
+ */
 eis::eis(unsigned long mantissa_length, unsigned long exponent_length){
 
     this->mantissa_length = mantissa_length;
@@ -20,10 +26,22 @@ eis::eis(unsigned long mantissa_length, unsigned long exponent_length){
 
 // setter and getter
 //-------------------------------
+/**
+ * Sets the sign to a new sign.
+ *
+ * @param negative the value to which the sign bit should be set (true for negative)
+ */
 void eis::setSign(const bool new_sign) {
     this->sign = new_sign;
 }
 
+/**
+ * Sets the exponent to a new exponent.
+ *
+ * Throws Exception:    When exponent sizes do not match.
+ *
+ * @param new_mantissa the vector to which the mantissa should be set
+ */
 void eis::setExponent(const std::vector<bool>& new_exponent) {
 
     if(new_exponent.size() != this->exponent_length){
@@ -36,6 +54,13 @@ void eis::setExponent(const std::vector<bool>& new_exponent) {
     }
 }
 
+/**
+ * Sets the mantissa to a new mantissa.
+ *
+ * Throws Exception:    When mantissa sizes do not match.
+ *
+ * @param new_mantissa the vector to which the mantissa should be set
+ */
 void eis::setMantissa(const std::vector<bool>& new_mantissa) {
 
     if(new_mantissa.size() != this->mantissa_length){
@@ -49,19 +74,40 @@ void eis::setMantissa(const std::vector<bool>& new_mantissa) {
 }
 
 
-
+/**
+ * Returns the sign.
+ *
+ * @return the sign
+ */
 bool eis::getSign() const {
     return this->sign;
 }
 
+/**
+ * Returns the exponent.
+ *
+ * @return the mantissa
+ */
 std::vector<bool> eis::getExponent() const {
     return this->exponent;
 }
 
+/**
+ * Returns the mantissa.
+ *
+ * @return the mantissa
+ */
 std::vector<bool> eis::getMantissa() const {
     return this->mantissa;
 }
 
+/**
+ * Concatenates the sign bit with the exponent vector and the mantissa vector.
+ * The resulting vector represents the floating point number in memory.
+ * Info: bit array = sign + matisse + exponent
+ *
+ * @return vector representing the floating point number
+ */
 std::vector<bool> eis::getBitArray() const {
 
     std::vector<bool> ret;
@@ -74,10 +120,20 @@ std::vector<bool> eis::getBitArray() const {
     return ret;
 }
 
+/**
+ * Returns the length of the exponent.
+ *
+ * @return length of the exponent
+ */
 unsigned long eis::getExponentLength() const {
     return this->exponent_length;
 }
 
+/**
+ * Returns the length of the mantissa.
+ *
+ * @return length of the mantissa
+ */
 unsigned long eis::getMantissaLength() const {
     return this->mantissa_length;
 }
@@ -86,6 +142,13 @@ unsigned long eis::getMantissaLength() const {
 
 // special values
 //-------------------------------
+/**
+ * Sets the floating point number to NaN (not a number)
+ *
+ * The sign bit can be set individually using the parameter.
+ *
+ * @param negative sets the sign bit of the NaN value
+ */
 void eis::setNaN(bool negative){
 
     if( this->exponent.empty() || this->mantissa.empty()){
@@ -109,6 +172,11 @@ void eis::setNaN(bool negative){
     }
 }
 
+/**
+ * Sets the floating point number to infinity.
+ *
+ * @param negative set to true for negative infinity (default false)
+ */
 void eis::setInf(bool negative) {
 
     if( this->exponent.empty() || this->mantissa.empty()){
@@ -131,6 +199,11 @@ void eis::setInf(bool negative) {
     }
 }
 
+/**
+ * Sets the floating point number to zero.
+ *
+ * @param negative set to true for negative zero (default false)
+ */
 void eis::setZero(bool negative){
 
     if( (this->exponent.size() != this->exponent_length) || (this->mantissa.size() != this->mantissa_length)){
@@ -149,7 +222,12 @@ void eis::setZero(bool negative){
 }
 
 
-
+/**
+ * Returns true if the eis object is zero.
+ * The sign bit is irrelevant.
+ *
+ * @return true if zero
+ */
 bool eis::isZero() const {
 
     for(unsigned long i = 0; i < this->exponent_length; i++){
@@ -167,6 +245,12 @@ bool eis::isZero() const {
     return true;
 }
 
+/**
+ * Returns true if the eis object represents a NaN value.
+ * The sign bit is irrelevant since some implementations differ between -NaN and +NaN.
+ *
+ * @return true if NaN
+ */
 bool eis::isNaN() const {
 
     for(unsigned long i = 0; i < this->exponent_length; i++){
@@ -190,6 +274,11 @@ bool eis::isNaN() const {
     return true ;
 }
 
+/**
+ * Returns true if the eis object is positive or negative infinity.
+ *
+ * @return true if pos. or neg. infinity
+ */
 bool eis::isInf() const {
 
 
@@ -208,6 +297,11 @@ bool eis::isInf() const {
     return true;
 }
 
+/**
+ * Returns true if the mps object is positive.
+ *
+ * @return true if positive
+ */
 bool eis::isPositive() const{
 
     if(this->sign){
@@ -221,14 +315,27 @@ bool eis::isPositive() const{
 
 // flippers
 //-------------------------------
+/**
+ * Flips the sign of the FPN represented by the eis object.
+ */
 void eis::flipSign() {
     this->sign = not this->sign;
 }
 
+/**
+ * Flips one bit of the exponent of the FPN represented by the eis object.
+ *
+ * @param idx the index where the bit flip will occur (indexing starts at 0)
+ */
 void eis::flipExponent(unsigned long idx) {
     this->exponent[idx] = not this->exponent[idx];
 }
 
+/**
+ * Flips one bit of the mantissa of the FPN represented by the eis object.
+ *
+ * @param idx the index where the bit flip will occur (indexing starts at 0)
+ */
 void eis::flipMantissa(unsigned long idx) {
     this->mantissa[idx] = not this->mantissa[idx];
 }
@@ -237,6 +344,11 @@ void eis::flipMantissa(unsigned long idx) {
 
 // set and get bit array value
 //-------------------------------
+/**
+ * Calculates the binary floating point representation of the given value and saves it inside the eis object.
+ *
+ * @param value the value to which the bit array should be set
+ */
 void eis::setValue(long double new_value) {
 
     // Handle special values.
@@ -342,6 +454,11 @@ void eis::setValue(long double new_value) {
 
 }
 
+/**
+ * Calculates the value of the floating point object as double.
+ *
+ * @return value as double
+ */
 long double eis::getValue() const {
 
     // handle special cases
@@ -394,6 +511,11 @@ long double eis::getValue() const {
 
 // to string
 //-------------------------------
+/**
+ * Returns the (double) value of the eis object as a string instead of a double.
+ *
+ * @return the value as a string
+ */
 std::string eis::toString() const{
 
     std::string str;
@@ -412,10 +534,21 @@ std::string eis::toString() const{
 
 // helper functions
 //-------------------------------
+/**
+ * Returns the bias of the exponent.
+ *
+ * @return bias of the exponent
+ */
 long eis::getBias() const{
     return ((long) pow (2, exponent_length)) / 2 -1;
 }
 
+/**
+ * Checks if a vector only consists of true booleans.
+ *
+ * @param vector reference to the vector, which should be checked
+ * @return true if all entries of the vector are true
+ */
 [[nodiscard]] bool eis::allTrue(const std::vector<bool>& vector) {
     return std::all_of(vector.begin(), vector.end(), [](bool i){return i;});
 }
