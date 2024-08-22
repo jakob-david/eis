@@ -15,7 +15,7 @@ else:
     os.system("git clone https://github.com/google/googletest.git ./gtests/googletest")
 
 print("create build directory")
-if not os.path.exists("./gtests/googletest"):
+if not os.path.exists("./build"):
     os.system("mkdir ./build")
 
 # create build files
