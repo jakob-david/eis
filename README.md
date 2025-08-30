@@ -1,15 +1,28 @@
 # eis
 
 ## Setup 
-To set up the library, navigate into the folder and execute the python file **setup.py**
+
+To build the project, run:
 
 ```
-cd ./eis
-python3 setup.py
+./run_build.sh
 ```
 
-This will add the two libraries **pybind11** and **google test**. The library will then be built, and the unit tests will be carried out. 
-If the libraries already exist, executing the file will update them instead of downloading them again.
+This script will:
+ - Compiles `main.cpp` into the executable `run_main`
+ - Build the C++ unit test binary `run_tests`
+ - Generates `eis_lib.so`, which can be imported as a Python module
+
+Once the build is complete, you can run the tests with:
+
+```
+./run_tests.sh
+```
+
+If all tests complete successfully, it is safe to either:
+ - Run the compiled binary: `run_main`
+ - Import the Python module in your code: `from eis_lib import eis`
+
 
 
 ## Description 
