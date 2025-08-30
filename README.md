@@ -9,14 +9,14 @@ To build the project, run:
 ```
 
 This script will:
- - Compiles `main.cpp` into the executable `run_main`
- - Build the C++ unit test binary `run_tests`
+ - Compiles `main.cpp` into the executable `eis_run`
+ - Build the C++ unit test binary `eis_test`
  - Generates `eis_lib.so`, which can be imported as a Python module
 
 Once the build is complete, you can run the tests with:
 
 ```
-./run_tests.sh
+./eis_run
 ```
 
 If all tests complete successfully, it is safe to either:

@@ -1,11 +1,23 @@
 #include <iostream>
 
-// INFO
-// --------------------------------------------------------------------------------
-// To use the main file uncomment the two marked lines in the CMakeLists.txt file.
-// --------------------------------------------------------------------------------
+#include "eis/eis.h"
+
+using namespace std; 
+
+
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    
+    eis EIS(26, 9);
+
+    EIS.setValue(3.14); 
+    cout << "Original Value: " << "\t" << EIS.getValue() << endl; 
+
+    EIS.flipSign(); 
+    EIS.flipExponent(4); 
+    EIS.flipMantissa(20); 
+
+    cout << "Value after Flips: " << "\t" << EIS.getValue() << endl; 
+
     return 0;
 }
