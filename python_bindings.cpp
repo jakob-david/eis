@@ -7,7 +7,7 @@
 // #include <pybind11/numpy.h>
 // #include <pybind11/operators.h>
 
-#include "eis_lib/eis.h"
+#include "eis/eis.h"
 
 namespace py = pybind11;
 

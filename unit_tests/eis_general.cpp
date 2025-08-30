@@ -3,9 +3,9 @@
 //
 
 #include "gtest/gtest.h"
-#include "eis.h"
+#include "helper_functions.h"
 
-#include "../functions/functions.h"
+#include "eis.h"
 
 TEST(constructor, simple_1){
 

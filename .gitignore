@@ -1,1 +1,10 @@
 /cmake-build-debug/
+
+build*/
+Testing/
+.vscode/
+.DS_Store
+
+eis_run
+eis_test
+eis_lib.so
