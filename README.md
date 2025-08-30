@@ -1,5 +1,7 @@
 # eis
 
+This code simulates bit flips in floating-point numbers. It is essentially a stripped-down version of my [mps](https://github.com/jakob-david/mps) project with some added functionality.
+
 ## Setup 
 
 To build the project, run:
